@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioX Script Website</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* Light background */
+            color: #333333; /* Dark text */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #ffffff; /* White background */
+            color: #333333; /* Dark text */
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            background-color: #4CAF50; /* Green */
+            color: #ffffff; /* White text */
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #45A049; /* Darker green */
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(1.0);
+        }
+        .editor {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .editor div {
+            background-color: #ffffff; /* White background */
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 8px;
+            width: 32%;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+        .editor div:hover {
+            border-color: #4CAF50; /* Green border on hover */
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333333; /* Dark text */
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0; /* Light background */
+            color: #333333; /* Dark text */
+            border: 1px solid #ccc; /* Light border */
+            padding: 10px;
+            margin-top: 5px;
+            resize: none;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+        #output {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #ffffff; /* White background */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777777; /* Gray text */
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .editor {
+                flex-direction: column;
+            }
+            .editor div {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>StudioX Script Website</h1>
+        <p>Your platform for testing HTML, CSS, and JavaScript code.</p>
+    </header>
+
+    <div class="button-container">
+        <button onclick="runCode()">▶</button>
+        <span class="button-label">Run</span>
+        <button onclick="saveFiddle()">💾</button>
+        <span class="button-label">Save Fiddle</span>
+    </div>
+
+    <div class="editor">
+        <div>
+            <h2>HTML</h2>
+            <textarea id="htmlInput" placeholder="Enter your HTML code here..."></textarea>
+        </div>
+        <div>
+            <h2>CSS</h2>
+            <textarea id="cssInput" placeholder="Enter your CSS code here..."></textarea>
+        </div>
+        <div>
+            <h2>JavaScript</h2>
+            <textarea id="jsInput" placeholder="Enter your JavaScript code here..."></textarea>
+        </div>
+    </div>
+
+    <div id="output"></div>
+
+    <footer>
+        <p>&copy; 2025 StudioX. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const html = document.getElementById("htmlInput").value;
+            const css = document.getElementById("cssInput").value;
+            const js = document.getElementById("jsInput").value;
+            const output = document.getElementById("output");
+
+            output.contentDocument.body.innerHTML = html + "<style>" + css + "</style>";
+            output.contentWindow.eval(js);
+        }
+
+        function saveFiddle() {
+            alert("Save Fiddle functionality to be implemented.");
+        }
+    </script>
+
+</body>
+</html>
